@@ -10,9 +10,11 @@ namespace ByteBank
             {
                 //pode dar uma exception.
                 Metodo();
-            }catch(NullReferenceException erro)
+            }
+            catch (Exception erro)
             {
                 Console.WriteLine("Aconteceu um erro - " + erro.Message);
+                Console.WriteLine(erro.StackTrace);
             }
         }
 
@@ -23,19 +25,9 @@ namespace ByteBank
 
         private static void TestaDivisao(int divisor)
         {
-            try
-            {
-                //trecho de código que pode dar uma exception
-                //try = tente executar esse trecho que código.
-                int resultado = Dividir(10, divisor);//aqui vai parar a execução do código
-                Console.WriteLine("Resultado da divisão de 10 por " + divisor + " é " + resultado);
-            }
-            catch(DivideByZeroException erro) {
-                //catch = vai pegar as exceções
-                //vem para o bloco catch para mostrar a exception
-                Console.WriteLine(erro.StackTrace);
-                Console.WriteLine("Não é possível fazer divisão por 0" + erro.Message);
-            }            
+            int resultado = Dividir(10, divisor);//aqui vai parar a execução do código
+            Console.WriteLine("Resultado da divisão de 10 por " + divisor + " é " + resultado);
+                       
         }
 
         private static int Dividir(int numero, int divisor)
