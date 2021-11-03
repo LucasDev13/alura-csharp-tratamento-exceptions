@@ -13,11 +13,11 @@ namespace ByteBank.Excecoes
 
         public SaldoInsuficienteException() { }
 
-        public SaldoInsuficienteException(double saldo, double valorSaldo) 
-            : this($"Tentativa de saque no valor de {valorSaldo} em uma conta com saldo de {saldo}")
+        public SaldoInsuficienteException(double saldo, double valorSaque) 
+            : this($"Tentativa de saque no valor de {valorSaque} em uma conta com saldo de {saldo}")
         {
             Saldo = saldo;
-            ValorSaldo = valorSaldo;
+            ValorSaldo = valorSaque;
         }
 
         public SaldoInsuficienteException(string message): base(message)
