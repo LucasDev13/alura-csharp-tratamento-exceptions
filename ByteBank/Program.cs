@@ -9,10 +9,18 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente contaCorrente = new ContaCorrente(10,2);
+                ContaCorrente contaCorrente = new ContaCorrente(1010,2587);
+                var conta2 = new ContaCorrente(4587, 25463);
+
+                conta2.Transferir(-10, contaCorrente);
+
                 contaCorrente.Depositar(50);
-                contaCorrente.Sacar(500);
+                Console.WriteLine($"Saldo conta -> {contaCorrente.Saldo}");
+                contaCorrente.Sacar(600);
+                Console.WriteLine($"Saldo conta - {contaCorrente.Saldo}");
+
                 
+
             }
             catch (ArgumentException e)
             {
@@ -22,7 +30,7 @@ namespace ByteBank
                 }
 
                 Console.WriteLine($"Argumento com problema: {e.ParamName}");
-                Console.WriteLine($"Ocorreu uma exceção do tipo {e.GetType()} - {e.Message}");
+                Console.WriteLine($"Ocorreu uma exceção do tipo -> {e.GetType()} -> {e.Message}");
 
             }catch(SaldoInsuficienteException e)
             {
