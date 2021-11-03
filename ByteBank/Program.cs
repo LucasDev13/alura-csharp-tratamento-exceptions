@@ -8,22 +8,15 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente contaCorrente = new ContaCorrente(5,5);
-                Metodo();
+                ContaCorrente contaCorrente = new ContaCorrente(0,0);
+                
             }
             catch (ArgumentException e)
             {
+                Console.WriteLine($"Argumento com problema: {e.ParamName}");
                 Console.WriteLine($"Ocorreu uma exceção do tipo {e.GetType()} - {e.Message}");
             }
-            catch (DivideByZeroException e)
-            {
-                Console.WriteLine($"Não é possível divisão por zero {e.Message}");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Aconteceu um erro - {e.Message}");
-                Console.WriteLine(e.StackTrace);
-            }
+            //Metodo();
         }
 
         private static void Metodo()
