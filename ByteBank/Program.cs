@@ -1,11 +1,44 @@
-﻿using ByteBank.Excecoes;
+﻿using ByteBank.Arquivo;
+using ByteBank.Excecoes;
 using System;
+using System.IO;
 
 namespace ByteBank
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            CarregarContas();
+        }
+
+        private static void CarregarContas()
+        {
+            LeitorDeArquivo leitor = null;
+
+            try
+            {
+               leitor = new LeitorDeArquivo("contasl.txt");
+
+                leitor.LerproximaLinha();
+                leitor.LerproximaLinha();
+                leitor.LerproximaLinha();
+                leitor.LerproximaLinha();
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("Exceção do tipo IOException capturada e tratada!");
+            }
+            finally
+            {
+                if(leitor != null)
+                {
+                    leitor.Fechar();
+                }
+            }
+        }
+
+        private static void TestaInnerException()
         {
             try
             {
