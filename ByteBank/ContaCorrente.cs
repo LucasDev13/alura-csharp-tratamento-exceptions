@@ -1,4 +1,6 @@
-﻿namespace ByteBank
+﻿using System;
+
+namespace ByteBank
 {
     public class ContaCorrente
     {
@@ -32,6 +34,15 @@
 
         public ContaCorrente(int agencia, int numero)
         {
+            if(agencia <= 0)
+            {
+                throw new ArgumentException("O argumento agencia deve ser maior que zero.");
+            }
+            if (numero <= 0)
+            {
+                throw new ArgumentException("O argumento número deve ser maior que zero.");
+            }
+
             Agencia = agencia;
             Numero = numero;
             TaxaOperacao = 30 / TotalDeContasCriadas;

@@ -8,8 +8,12 @@ namespace ByteBank
         {
             try
             {
-                //pode dar uma exception.
+                ContaCorrente contaCorrente = new ContaCorrente(5,5);
                 Metodo();
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"Ocorreu uma exceção do tipo {e.GetType()} - {e.Message}");
             }
             catch (DivideByZeroException e)
             {
@@ -24,7 +28,7 @@ namespace ByteBank
 
         private static void Metodo()
         {
-            TestaDivisao(0);
+            TestaDivisao(2);
         }
 
         private static void TestaDivisao(int divisor)
