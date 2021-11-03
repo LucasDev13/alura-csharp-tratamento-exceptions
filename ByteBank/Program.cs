@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ByteBank.Excecoes;
+using System;
 
 namespace ByteBank
 {
@@ -8,13 +9,28 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente contaCorrente = new ContaCorrente(0,0);
+                ContaCorrente contaCorrente = new ContaCorrente(10,2);
+                contaCorrente.Depositar(50);
+                contaCorrente.Sacar(500);
                 
             }
             catch (ArgumentException e)
             {
+                if(e.ParamName == "numero")
+                {
+
+                }
+
                 Console.WriteLine($"Argumento com problema: {e.ParamName}");
                 Console.WriteLine($"Ocorreu uma exceção do tipo {e.GetType()} - {e.Message}");
+
+            }catch(SaldoInsuficienteException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Execeção do tipo SaldoInsuficienteException");
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
             //Metodo();
         }

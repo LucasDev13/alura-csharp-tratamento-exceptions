@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ByteBank.Excecoes;
+using System;
 
 namespace ByteBank
 {
@@ -45,20 +46,20 @@ namespace ByteBank
 
             Agencia = agencia;
             Numero = numero;
-            //TaxaOperacao = 30 / TotalDeContasCriadas;
             TotalDeContasCriadas++;
+            TaxaOperacao = 30 / TotalDeContasCriadas;
         }
 
 
-        public bool Sacar(double valor)
+        public void  Sacar(double valor)
         {
             if (_saldo < valor)
             {
-                return false;
+                throw new SaldoInsuficienteException($"Saldo insuficiente para o saque no valor de {valor}");
             }
 
             _saldo -= valor;
-            return true;
+            
         }
 
         public void Depositar(double valor)
